@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 export default function PropertiesSection() {
   const gridRef = useRef<HTMLDivElement>(null);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
-    null
+    null,
   );
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -36,13 +36,15 @@ export default function PropertiesSection() {
     const el = gridRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
       const scrollTriggerModule = await import("gsap/ScrollTrigger");
       const gsap = gsapModule.default;
       gsap.registerPlugin(scrollTriggerModule.ScrollTrigger);
+
+      if (!el) return;
 
       ctx = gsap.context(() => {
         gsap.fromTo(
@@ -59,7 +61,7 @@ export default function PropertiesSection() {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }, el);
     }
@@ -223,7 +225,7 @@ function CardRevealButton({
 
   useEffect(() => {
     if (!revealed || !btnRef.current) return;
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function animate() {
       const gsapModule = await import("gsap");
@@ -237,7 +239,7 @@ function CardRevealButton({
           gsap.fromTo(
             inner,
             { opacity: 0, y: 6 },
-            { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
           );
         }
       }, el);
@@ -257,8 +259,8 @@ function CardRevealButton({
         ? "bg-primary text-primary-foreground"
         : "bg-primary text-primary-foreground hover:bg-primary/90"
       : revealed
-      ? "bg-accent text-accent-foreground"
-      : "bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground";
+        ? "bg-accent text-accent-foreground"
+        : "bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground";
 
   return (
     <button

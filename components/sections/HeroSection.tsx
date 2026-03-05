@@ -60,11 +60,11 @@ export default function HeroSection() {
         gsap.fromTo(
           textEl,
           { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 },
         );
       }
     },
-    [current]
+    [current],
   );
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function HeroSection() {
     const textEl = textRef.current;
     if (!textEl) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -98,7 +98,7 @@ export default function HeroSection() {
             stagger: 0.12,
             ease: "power3.out",
             delay: 0.5,
-          }
+          },
         );
       }, textEl!);
     }
@@ -136,7 +136,7 @@ export default function HeroSection() {
           key={i}
           className={cn(
             "absolute inset-0 transition-opacity duration-1000 ease-in-out",
-            i === current ? "opacity-100" : "opacity-0"
+            i === current ? "opacity-100" : "opacity-0",
           )}
         >
           <Image
@@ -184,7 +184,7 @@ export default function HeroSection() {
               <ArrowRight className="h-5 w-5" />
             </button>
             <a
-              href="tel:+251911123456"
+              href="tel:+251913455624"
               className="inline-flex items-center gap-2.5 bg-primary-foreground/15 text-primary-foreground px-8 py-4 rounded-xl text-base font-bold backdrop-blur-sm border border-primary-foreground/25 hover:bg-primary-foreground/25 transition-colors cursor-pointer"
             >
               <Phone className="h-5 w-5" />
@@ -227,7 +227,7 @@ export default function HeroSection() {
               "h-3 rounded-full transition-all duration-300 cursor-pointer",
               i === current
                 ? "w-10 bg-primary-foreground"
-                : "w-3 bg-primary-foreground/40 hover:bg-primary-foreground/60"
+                : "w-3 bg-primary-foreground/40 hover:bg-primary-foreground/60",
             )}
             aria-label={`Go to slide ${i + 1}`}
           />

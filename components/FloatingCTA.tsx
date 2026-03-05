@@ -24,7 +24,7 @@ export default function FloatingCTA() {
     const el = fabRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -33,9 +33,15 @@ export default function FloatingCTA() {
         gsap.fromTo(
           el,
           { scale: 0, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)", delay: 2 }
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            ease: "back.out(1.7)",
+            delay: 2,
+          },
         );
-      }, el);
+      }, el!);
     }
     init();
     return () => {
@@ -48,7 +54,7 @@ export default function FloatingCTA() {
     const el = popupRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function animate() {
       const gsapModule = await import("gsap");
@@ -59,7 +65,13 @@ export default function FloatingCTA() {
           gsap.fromTo(
             el,
             { opacity: 0, y: 20, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "back.out(1.4)" }
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.35,
+              ease: "back.out(1.4)",
+            },
           );
         } else {
           gsap.to(el, {
@@ -68,7 +80,9 @@ export default function FloatingCTA() {
             scale: 0.95,
             duration: 0.2,
             ease: "power2.in",
-            onComplete: () => gsap.set(el, { display: "none" }),
+            onComplete: () => {
+              gsap.set(el, { display: "none" });
+            },
           });
         }
       });
@@ -82,7 +96,11 @@ export default function FloatingCTA() {
   return (
     <>
       {/* === Floating contact FAB (desktop + mobile, bottom-right) === */}
-      <div ref={fabRef} className="fixed bottom-6 right-6 z-50" style={{ opacity: 0 }}>
+      <div
+        ref={fabRef}
+        className="fixed bottom-6 right-6 z-50"
+        style={{ opacity: 0 }}
+      >
         {/* Popup */}
         <div
           ref={popupRef}
@@ -93,14 +111,14 @@ export default function FloatingCTA() {
             Get in Touch
           </p>
           <a
-            href="tel:+251911123456"
+            href="tel:+251913455624"
             className="flex items-center gap-3 rounded-xl bg-primary text-primary-foreground p-3 text-sm font-semibold hover:bg-primary/90 transition-colors"
           >
             <Phone className="h-4 w-4" />
-            Call +251 911 123 456
+            Call +251 913 455 624
           </a>
           <a
-            href="https://t.me/temerproperties"
+            href="https://t.me/benimak7"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 rounded-xl bg-[#0088cc] text-primary-foreground p-3 text-sm font-semibold hover:bg-[#0088cc]/90 transition-colors mt-2"
@@ -127,7 +145,7 @@ export default function FloatingCTA() {
             "flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-all duration-300 cursor-pointer",
             contactOpen
               ? "bg-foreground text-background rotate-0"
-              : "bg-primary text-primary-foreground animate-pulse"
+              : "bg-primary text-primary-foreground animate-pulse",
           )}
           aria-label={contactOpen ? "Close contact menu" : "Open contact menu"}
         >
@@ -143,12 +161,12 @@ export default function FloatingCTA() {
       <div
         className={cn(
           "fixed bottom-0 left-0 right-0 z-40 md:hidden transition-transform duration-300 border-t border-border bg-card/98 backdrop-blur-lg shadow-[0_-4px_20px_rgba(0,0,0,0.1)]",
-          showMobileBar ? "translate-y-0" : "translate-y-full"
+          showMobileBar ? "translate-y-0" : "translate-y-full",
         )}
       >
         <div className="flex items-center gap-3 px-4 py-3">
           <a
-            href="tel:+251911123456"
+            href="tel:+251913455624"
             className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-xl text-sm font-bold"
           >
             <Phone className="h-4 w-4" />

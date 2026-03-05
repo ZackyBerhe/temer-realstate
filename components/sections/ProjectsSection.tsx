@@ -8,45 +8,45 @@ import { cn } from "@/lib/utils";
 const projects = [
   {
     image: "/images/project-1.jpg",
-    title: "Emerald Towers",
-    location: "Bole, Addis Ababa",
+    title: "Ayat Feres Bet Site",
+    location: "Ayat, Addis Ababa",
     units: "120 Units",
     status: "Under Construction",
   },
   {
     image: "/images/project-2.jpg",
-    title: "Riverside Gardens",
-    location: "CMC, Addis Ababa",
+    title: "Garment Site 1",
+    location: "Garment, Addis Ababa",
     units: "85 Units",
     status: "Pre-Launch",
   },
   {
     image: "/images/project-3.jpg",
-    title: "Skyview Residences",
-    location: "Summit, Addis Ababa",
+    title: "Sarbet Site",
+    location: "Sarbet, Addis Ababa",
     units: "200 Units",
-    status: "Ready to Move",
-  },
-  {
-    image: "/images/project-4.jpg",
-    title: "Green Oasis Complex",
-    location: "Ayat, Addis Ababa",
-    units: "150 Units",
     status: "Under Construction",
   },
   {
-    image: "/images/project-5.jpg",
-    title: "Heritage Walk",
-    location: "Old Airport, Addis Ababa",
-    units: "60 Units",
+    image: "/images/project-4.jpg",
+    title: "Ayat Site",
+    location: "Ayat, Addis Ababa",
+    units: "150 Units",
     status: "Pre-Launch",
   },
   {
+    image: "/images/project-5.jpg",
+    title: "Garment Site 2",
+    location: "Garment, Addis Ababa",
+    units: "60 Units",
+    status: "Under Construction",
+  },
+  {
     image: "/images/project-6.jpg",
-    title: "Marina Bay Towers",
-    location: "Kazanchis, Addis Ababa",
+    title: "Sumale Tera Site",
+    location: "Sumale Tera, Addis Ababa",
     units: "180 Units",
-    status: "Ready to Move",
+    status: "Pre-Launch",
   },
 ];
 
@@ -73,26 +73,23 @@ export default function ProjectsSection() {
 
   const maxIndex = projects.length - visibleCount;
 
-  const animateSlide = useCallback(
-    async (index: number) => {
-      const track = trackRef.current;
-      if (!track) return;
+  const animateSlide = useCallback(async (index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
 
-      const gsapModule = await import("gsap");
-      const gsap = gsapModule.default;
+    const gsapModule = await import("gsap");
+    const gsap = gsapModule.default;
 
-      const cardWidth = track.children[0]?.getBoundingClientRect().width || 0;
-      const gap = 24;
-      const offset = index * (cardWidth + gap);
+    const cardWidth = track.children[0]?.getBoundingClientRect().width || 0;
+    const gap = 24;
+    const offset = index * (cardWidth + gap);
 
-      gsap.to(track, {
-        x: -offset,
-        duration: 0.6,
-        ease: "power3.out",
-      });
-    },
-    []
-  );
+    gsap.to(track, {
+      x: -offset,
+      duration: 0.6,
+      ease: "power3.out",
+    });
+  }, []);
 
   const goNext = useCallback(() => {
     const next = Math.min(currentIndex + 1, maxIndex);
@@ -126,7 +123,7 @@ export default function ProjectsSection() {
     const el = sectionRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -134,23 +131,25 @@ export default function ProjectsSection() {
       const gsap = gsapModule.default;
       gsap.registerPlugin(scrollTriggerModule.ScrollTrigger);
 
-      ctx = gsap.context(() => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
+      if (el) {
+        ctx = gsap.context(() => {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 60 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
             },
-          }
-        );
-      }, el);
+          );
+        }, el);
+      }
     }
     init();
 
@@ -189,7 +188,7 @@ export default function ProjectsSection() {
                 "flex h-12 w-12 items-center justify-center rounded-xl border border-border transition-colors cursor-pointer",
                 currentIndex === 0
                   ? "opacity-40 cursor-not-allowed"
-                  : "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                  : "hover:bg-primary hover:text-primary-foreground hover:border-primary",
               )}
               aria-label="Previous project"
             >
@@ -202,7 +201,7 @@ export default function ProjectsSection() {
                 "flex h-12 w-12 items-center justify-center rounded-xl border border-border transition-colors cursor-pointer",
                 currentIndex >= maxIndex
                   ? "opacity-40 cursor-not-allowed"
-                  : "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                  : "hover:bg-primary hover:text-primary-foreground hover:border-primary",
               )}
               aria-label="Next project"
             >
@@ -244,8 +243,8 @@ export default function ProjectsSection() {
                         project.status === "Ready to Move"
                           ? "bg-primary text-primary-foreground"
                           : project.status === "Pre-Launch"
-                          ? "bg-foreground text-background"
-                          : "bg-accent text-accent-foreground"
+                            ? "bg-foreground text-background"
+                            : "bg-accent text-accent-foreground",
                       )}
                     >
                       {project.status}
@@ -282,7 +281,7 @@ export default function ProjectsSection() {
                 "h-2.5 rounded-full transition-all duration-300 cursor-pointer",
                 i === currentIndex
                   ? "w-8 bg-primary"
-                  : "w-2.5 bg-border hover:bg-muted-foreground"
+                  : "w-2.5 bg-border hover:bg-muted-foreground",
               )}
               aria-label={`Go to slide group ${i + 1}`}
             />

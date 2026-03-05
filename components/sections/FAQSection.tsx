@@ -18,15 +18,14 @@ const faqs = [
       "We offer flexible payment plans tailored to your budget. Options include full upfront payment with discounts, installment plans ranging from 12 to 60 months, and bank mortgage assistance. Our finance team will guide you through the best option for your situation.",
   },
   {
-    question:
-      "Is real estate a good investment in Addis Ababa right now?",
+    question: "Is real estate a good investment in Addis Ababa right now?",
     answer:
       "Addis Ababa's real estate market continues to show strong growth potential. Property values have appreciated significantly over the past decade, and the city's rapid urbanization, expanding infrastructure, and growing middle class make it an excellent time to invest. Our properties have shown an average appreciation of 15-25% annually.",
   },
   {
     question: "How do I schedule a property viewing?",
     answer:
-      "Scheduling a viewing is easy. You can call us directly at +251 911 123 456, message us on Telegram @temerproperties, or email info@temerproperties.com. We offer both in-person tours and virtual walkthroughs for your convenience. Our team is available 6 days a week.",
+      "Scheduling a viewing is easy. You can call us directly at +251 913 455 624, message us on Telegram @temerproperties, or email info@temerproperties.com. We offer both in-person tours and virtual walkthroughs for your convenience. Our team is available 6 days a week.",
   },
   {
     question: "What guarantees do you provide on build quality?",
@@ -48,14 +47,14 @@ export default function FAQSection() {
     (i: number) => {
       setOpenIndex(openIndex === i ? null : i);
     },
-    [openIndex]
+    [openIndex],
   );
 
   // Animate on scroll
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -65,7 +64,7 @@ export default function FAQSection() {
 
       ctx = gsap.context(() => {
         gsap.fromTo(
-          el.querySelectorAll(".faq-item"),
+          el!.querySelectorAll(".faq-item"),
           { opacity: 0, y: 30 },
           {
             opacity: 1,
@@ -74,13 +73,13 @@ export default function FAQSection() {
             stagger: 0.08,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: el,
+              trigger: el!,
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
-      }, el);
+      }, el!);
     }
     init();
     return () => {
@@ -141,7 +140,7 @@ export default function FAQSection() {
                   <ChevronDown
                     className={cn(
                       "h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform duration-300",
-                      openIndex === i && "rotate-180 text-primary"
+                      openIndex === i && "rotate-180 text-primary",
                     )}
                   />
                 </button>
@@ -150,7 +149,7 @@ export default function FAQSection() {
                     "grid transition-all duration-300",
                     openIndex === i
                       ? "grid-rows-[1fr] opacity-100"
-                      : "grid-rows-[0fr] opacity-0"
+                      : "grid-rows-[0fr] opacity-0",
                   )}
                 >
                   <div className="overflow-hidden">
@@ -174,11 +173,11 @@ export default function FAQSection() {
             </p>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
-                href="tel:+251911123456"
+                href="tel:+251913455624"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary/90 transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                Call +251 911 123 456
+                +251 913 455 624
               </a>
               <a
                 href="mailto:info@temerproperties.com"

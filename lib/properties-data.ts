@@ -18,13 +18,13 @@ export interface Property {
 export const properties: Property[] = [
   {
     id: "skyline-residences-bole",
-    title: "Skyline Residences",
-    location: "Bole, Addis Ababa",
-    price: 12500000,
+    title: "Bulgaria Site",
+    location: "Bulgaria, Addis Ababa",
+    price: 7992500,
     pricePerSqm: 75000,
-    bedrooms: 3,
+    bedrooms: 2,
     bathrooms: 2,
-    area: 167,
+    area: 69.5,
     parking: 2,
     type: "Apartment",
     yearBuilt: 2024,
@@ -36,7 +36,7 @@ export const properties: Property[] = [
       "/images/property-4.jpg",
     ],
     description:
-      "Luxurious high-rise apartment in the heart of Bole. Featuring floor-to-ceiling windows with panoramic city views, modern open-plan living, premium finishes throughout, and access to world-class amenities including a rooftop terrace, fitness center, and 24/7 security.",
+      "Luxurious high-rise apartment in the heart of Bulgaria, Addis Ababa. Featuring floor-to-ceiling windows with panoramic city views, modern open-plan living, premium finishes throughout, and access to world-class amenities including a rooftop terrace, fitness center, and 24/7 security.",
   },
   {
     id: "green-valley-condos-cmc",

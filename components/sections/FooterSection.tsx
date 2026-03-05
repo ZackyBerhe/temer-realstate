@@ -99,10 +99,10 @@ export default function FooterSection() {
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />
                 <a
-                  href="tel:+251911123456"
+                  href="tel:+251913455624"
                   className="text-sm text-background/60 hover:text-primary transition-colors"
                 >
-                  +251 911 123 456
+                  +251 913 455 624
                 </a>
               </li>
               <li className="flex items-center gap-3">
