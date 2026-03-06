@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-  type TouchEvent as ReactTouchEvent,
-} from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { type Property } from "@/lib/propertyService";
 import { cn } from "@/lib/utils";
-import type { Property } from "@/lib/properties-data";
 import {
   X,
   ChevronLeft,
@@ -71,7 +65,7 @@ export default function PropertyModal({
   useEffect(() => {
     if (!overlayRef.current || !modalRef.current) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function animate() {
       const gsapModule = await import("gsap");
@@ -87,7 +81,7 @@ export default function PropertyModal({
           gsap.fromTo(
             overlay,
             { opacity: 0 },
-            { opacity: 1, duration: 0.3, ease: "power2.out" }
+            { opacity: 1, duration: 0.3, ease: "power2.out" },
           );
           gsap.fromTo(
             modal,
@@ -99,7 +93,7 @@ export default function PropertyModal({
               duration: 0.4,
               ease: "back.out(1.4)",
               delay: 0.1,
-            }
+            },
           );
         } else {
           gsap.to(modal, {
@@ -132,7 +126,7 @@ export default function PropertyModal({
   useEffect(() => {
     if (!isOpen || !detailsGridRef.current) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function stagger() {
       const gsapModule = await import("gsap");
@@ -152,7 +146,7 @@ export default function PropertyModal({
             stagger: 0.06,
             ease: "power2.out",
             delay: 0.35,
-          }
+          },
         );
       }, el);
     }
@@ -181,14 +175,14 @@ export default function PropertyModal({
       const next = (index + total) % total;
       setCurrentSlide(next);
     },
-    [property]
+    [property],
   );
 
   // Swipe support
-  const handleTouchStart = (e: ReactTouchEvent) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
   };
-  const handleTouchMove = (e: ReactTouchEvent) => {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     touchEndX.current = e.touches[0].clientX;
   };
   const handleTouchEnd = () => {
@@ -229,7 +223,7 @@ export default function PropertyModal({
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-[100] items-center justify-center bg-foreground/60 backdrop-blur-sm p-4 sm:p-6"
+      className="fixed inset-0 z-[100] items-center justify-center bg-black/20 backdrop-blur-md p-4 sm:p-6"
       style={{ display: "none", opacity: 0 }}
       role="dialog"
       aria-modal="true"
@@ -263,7 +257,7 @@ export default function PropertyModal({
                 "absolute inset-0 transition-opacity duration-500",
                 i === currentSlide
                   ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
+                  : "opacity-0 pointer-events-none",
               )}
             >
               <Image
@@ -303,7 +297,7 @@ export default function PropertyModal({
                   "h-2.5 rounded-full transition-all duration-300 cursor-pointer",
                   i === currentSlide
                     ? "w-7 bg-card"
-                    : "w-2.5 bg-card/50 hover:bg-card/70"
+                    : "w-2.5 bg-card/50 hover:bg-card/70",
                 )}
                 aria-label={`Go to image ${i + 1}`}
               />
@@ -364,15 +358,25 @@ export default function PropertyModal({
 
           {/* ===== Action Buttons ===== */}
           <div className="flex flex-col gap-3 sm:flex-row">
-            <RevealButton
-              revealed={showPhone}
-              onClick={() => setShowPhone(true)}
-              revealText="+251 9XX XXX XXX"
-              defaultIcon={<Phone className="h-4 w-4" />}
-              defaultText="Call Now"
-              variant="primary"
-              ariaLabel="Reveal phone number"
-            />
+            {showPhone ? (
+              <a
+                href="tel:+251913455624"
+                className="flex items-center gap-3 rounded-xl bg-primary text-primary-foreground p-3 text-sm font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                Call +251 913 455 624
+              </a>
+            ) : (
+              <RevealButton
+                revealed={showPhone}
+                onClick={() => setShowPhone(true)}
+                revealText="+251 913 455 624"
+                defaultIcon={<Phone className="h-4 w-4" />}
+                defaultText="Call Now"
+                variant="primary"
+                ariaLabel="Reveal phone number"
+              />
+            )}
             <RevealButton
               revealed={showEmail}
               onClick={() => setShowEmail(true)}
@@ -414,7 +418,7 @@ function RevealButton({
 
   useEffect(() => {
     if (!revealed || !btnRef.current) return;
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function animate() {
       const gsapModule = await import("gsap");
@@ -428,7 +432,7 @@ function RevealButton({
           gsap.fromTo(
             inner,
             { opacity: 0, y: 8 },
-            { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+            { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
           );
         }
       }, el);
@@ -448,8 +452,8 @@ function RevealButton({
         ? "bg-primary text-primary-foreground"
         : "bg-primary text-primary-foreground hover:bg-primary/90"
       : revealed
-      ? "bg-accent text-accent-foreground"
-      : "bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground";
+        ? "bg-accent text-accent-foreground"
+        : "bg-accent text-accent-foreground hover:bg-primary hover:text-primary-foreground";
 
   return (
     <button

@@ -4,7 +4,8 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Section from "@/components/ui/Section";
 import PropertyModal from "@/components/PropertyModal";
-import { properties, type Property } from "@/lib/properties-data";
+import { type Property } from "@/lib/propertyService";
+import { getProperties } from "@/lib/propertyService";
 import {
   MapPin,
   ArrowRight,
@@ -18,10 +19,29 @@ import { cn } from "@/lib/utils";
 
 export default function PropertiesSection() {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(
     null,
   );
   const [modalOpen, setModalOpen] = useState(false);
+
+  // Fetch properties from Firebase
+  useEffect(() => {
+    const loadProperties = async () => {
+      try {
+        const data = await getProperties();
+        const activeProperties = data.filter((property) => property.active);
+        setProperties(activeProperties);
+      } catch (error) {
+        console.error("Error loading properties:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProperties();
+  }, []);
 
   const openModal = useCallback((prop: Property) => {
     setSelectedProperty(prop);
@@ -95,14 +115,28 @@ export default function PropertiesSection() {
           ref={gridRef}
           className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {properties.map((prop) => (
-            <PropertyCard
-              key={prop.id}
-              property={prop}
-              formatPrice={formatPrice}
-              onViewDetails={() => openModal(prop)}
-            />
-          ))}
+          {loading
+            ? // Loading skeleton
+              Array.from({ length: 6 }).map((_, index) => (
+                <div key={index} className="animate-pulse">
+                  <div className="bg-card border border-border rounded-xl overflow-hidden">
+                    <div className="h-48 bg-gray-200"></div>
+                    <div className="p-4 space-y-3">
+                      <div className="h-4 bg-gray-200 rounded"></div>
+                      <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-6 bg-gray-200 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : properties.map((prop: Property) => (
+                <PropertyCard
+                  key={prop.id}
+                  property={prop}
+                  formatPrice={formatPrice}
+                  onViewDetails={() => openModal(prop)}
+                />
+              ))}
         </div>
       </Section>
 
@@ -171,14 +205,24 @@ function PropertyCard({
 
         {/* Call / Email buttons */}
         <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-          <CardRevealButton
-            revealed={showPhone}
-            onClick={() => setShowPhone(true)}
-            revealText="+251 9XX XXX XXX"
-            icon={<Phone className="h-3.5 w-3.5" />}
-            defaultText="Call Now"
-            variant="primary"
-          />
+          {showPhone ? (
+            <a
+              href="tel:+251913455624"
+              className="flex items-center gap-3 rounded-xl bg-primary text-primary-foreground p-3 text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Call +251 913 455 624
+            </a>
+          ) : (
+            <CardRevealButton
+              revealed={showPhone}
+              onClick={() => setShowPhone(true)}
+              revealText="+251 913 455 624"
+              icon={<Phone className="h-3.5 w-3.5" />}
+              defaultText="Call Now"
+              variant="primary"
+            />
+          )}
           <CardRevealButton
             revealed={showEmail}
             onClick={() => setShowEmail(true)}

@@ -2,7 +2,9 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X, Phone, Building2 } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import Image from "next/image";
+import Logo from "../public/images/Logo.jpg";
 
 const navLinks = [
   { label: "Home", href: "#hero" },
@@ -153,19 +155,14 @@ export default function Navbar() {
             onClick={() => scrollToSection("#hero")}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <Building2
-              className={cn(
-                "h-8 w-8 transition-colors",
-                scrolled ? "text-primary" : "text-primary-foreground",
-              )}
-            />
+            <Image src={Logo} alt="Temer Properties" width={50} height={50} />
             <span
               className={cn(
-                "text-xl font-bold font-serif tracking-tight transition-colors",
+                "text-xl font-bold font-serif tracking-tight transition-colors text-left",
                 scrolled ? "text-foreground" : "text-primary-foreground",
               )}
             >
-              TEMER PROPERTIES
+              TEMER <br /> PROPERTIES
             </span>
           </button>
 

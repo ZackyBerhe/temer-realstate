@@ -127,6 +127,15 @@ export default function FloatingCTA() {
             Message on Telegram
           </a>
           <a
+            href="https://wa.me/251913455624"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-xl bg-[#25D366] text-primary-foreground p-3 text-sm font-semibold hover:bg-[#25D366]/90 transition-colors mt-2"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Message on WhatsApp
+          </a>
+          <a
             href="mailto:info@temerproperties.com"
             className="flex items-center gap-3 rounded-xl bg-accent text-accent-foreground p-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-colors mt-2"
           >
@@ -171,6 +180,15 @@ export default function FloatingCTA() {
           >
             <Phone className="h-4 w-4" />
             Call Now
+          </a>
+          <a
+            href="https://wa.me/251913455624"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-primary-foreground py-3 rounded-xl text-sm font-bold"
+          >
+            <MessageCircle className="h-4 w-4" />
+            WhatsApp
           </a>
           <a
             href="https://t.me/temerproperties"
