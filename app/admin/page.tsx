@@ -6,6 +6,9 @@ import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 
+// Force dynamic rendering to prevent SSR issues
+export const dynamic = "force-dynamic";
+
 export default function AdminPage() {
   const router = useRouter();
 

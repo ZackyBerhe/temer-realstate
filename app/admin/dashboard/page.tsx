@@ -10,6 +10,9 @@ import PropertyCardAdmin from "@/components/admin/PropertyCardAdmin";
 import AddPropertyModal from "@/components/admin/AddPropertyModal";
 import { LogOut, Plus } from "lucide-react";
 
+// Force dynamic rendering to prevent SSR issues
+export const dynamic = "force-dynamic";
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [properties, setProperties] = useState<Property[]>([]);
@@ -82,8 +85,12 @@ export default function AdminDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">My Temer Properties List</h1>
-              <p className="text-sm text-gray-600">Manage and control your property listings</p>
+              <h1 className="text-2xl font-bold text-gray-900">
+                My Temer Properties List
+              </h1>
+              <p className="text-sm text-gray-600">
+                Manage and control your property listings
+              </p>
             </div>
             <div className="flex items-center gap-3">
               <button
