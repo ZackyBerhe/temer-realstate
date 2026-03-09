@@ -57,7 +57,7 @@ export default function WhyChooseUsSection() {
     const el = gridRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -66,6 +66,7 @@ export default function WhyChooseUsSection() {
       gsap.registerPlugin(scrollTriggerModule.ScrollTrigger);
 
       ctx = gsap.context(() => {
+        if (!el) return;
         gsap.fromTo(
           el.querySelectorAll(".feature-card"),
           { opacity: 0, y: 40 },
@@ -80,9 +81,9 @@ export default function WhyChooseUsSection() {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
-      }, el);
+      }, el!);
     }
     init();
 

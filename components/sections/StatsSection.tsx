@@ -38,7 +38,7 @@ export default function StatsSection() {
     const el = sectionRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -61,7 +61,7 @@ export default function StatsSection() {
               start: "top 85%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
 
         // Animate numbers
@@ -87,7 +87,7 @@ export default function StatsSection() {
             },
           });
         });
-      }, el);
+      }, el!);
     }
     init();
 

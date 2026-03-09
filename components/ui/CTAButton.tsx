@@ -26,16 +26,18 @@ export default function CTAButton({
     const el = btnRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function initGsap() {
       const gsapModule = await import("gsap");
       const gsap = gsapModule.default;
 
       ctx = gsap.context(() => {
-        const iconEl = el.querySelector(".btn-icon");
+        const iconEl = el?.querySelector(".btn-icon");
 
+        if (!el) return;
         el.addEventListener("mouseenter", () => {
+          if (!el) return;
           gsap.to(el, { scale: 1.03, duration: 0.25, ease: "power2.out" });
           if (iconEl) {
             gsap.to(iconEl, { x: 4, duration: 0.25, ease: "power2.out" });
@@ -43,12 +45,13 @@ export default function CTAButton({
         });
 
         el.addEventListener("mouseleave", () => {
+          if (!el) return;
           gsap.to(el, { scale: 1, duration: 0.25, ease: "power2.out" });
           if (iconEl) {
             gsap.to(iconEl, { x: 0, duration: 0.25, ease: "power2.out" });
           }
         });
-      }, el);
+      }, el!);
     }
 
     initGsap();
@@ -81,7 +84,7 @@ export default function CTAButton({
         "inline-flex items-center gap-2 rounded-xl font-semibold transition-colors cursor-pointer",
         variants[variant],
         sizes[size],
-        className
+        className,
       )}
     >
       {children}

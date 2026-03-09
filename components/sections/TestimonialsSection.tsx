@@ -93,7 +93,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function init() {
       const gsapModule = await import("gsap");
@@ -102,8 +102,10 @@ export default function TestimonialsSection() {
       gsap.registerPlugin(scrollTriggerModule.ScrollTrigger);
 
       ctx = gsap.context(() => {
+        if (!el) return;
+        const testimonialCards = el.querySelectorAll(".testimonial-card");
         gsap.fromTo(
-          el.querySelectorAll(".testimonial-card"),
+          testimonialCards,
           { opacity: 0, y: 40 },
           {
             opacity: 1,
@@ -116,9 +118,9 @@ export default function TestimonialsSection() {
               start: "top 80%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
-      }, el);
+      }, el!);
     }
     init();
     return () => {
@@ -151,7 +153,7 @@ export default function TestimonialsSection() {
               "flex h-11 w-11 items-center justify-center rounded-xl border border-border transition-colors cursor-pointer",
               currentIndex === 0
                 ? "opacity-40 cursor-not-allowed"
-                : "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                : "hover:bg-primary hover:text-primary-foreground hover:border-primary",
             )}
             aria-label="Previous testimonial"
           >
@@ -164,7 +166,7 @@ export default function TestimonialsSection() {
               "flex h-11 w-11 items-center justify-center rounded-xl border border-border transition-colors cursor-pointer",
               currentIndex >= maxIndex
                 ? "opacity-40 cursor-not-allowed"
-                : "hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                : "hover:bg-primary hover:text-primary-foreground hover:border-primary",
             )}
             aria-label="Next testimonial"
           >
@@ -225,7 +227,7 @@ export default function TestimonialsSection() {
                 "h-2.5 rounded-full transition-all duration-300 cursor-pointer",
                 i === currentIndex
                   ? "w-8 bg-primary"
-                  : "w-2.5 bg-border hover:bg-muted-foreground"
+                  : "w-2.5 bg-border hover:bg-muted-foreground",
               )}
               aria-label={`Go to testimonial group ${i + 1}`}
             />

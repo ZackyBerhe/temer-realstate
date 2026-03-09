@@ -24,13 +24,15 @@ export default function Section({
     const el = sectionRef.current;
     if (!el) return;
 
-    let ctx: ReturnType<typeof import("gsap")["default"]["context"]>;
+    let ctx: ReturnType<(typeof import("gsap"))["default"]["context"]>;
 
     async function initGsap() {
       const gsapModule = await import("gsap");
       const scrollTriggerModule = await import("gsap/ScrollTrigger");
       const gsap = gsapModule.default;
       gsap.registerPlugin(scrollTriggerModule.ScrollTrigger);
+
+      if (!el) return;
 
       ctx = gsap.context(() => {
         gsap.fromTo(
@@ -47,7 +49,7 @@ export default function Section({
               end: "top 50%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       }, el);
     }
@@ -72,7 +74,7 @@ export default function Section({
         <div
           className={cn(
             "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8",
-            containerClassName
+            containerClassName,
           )}
         >
           {children}
