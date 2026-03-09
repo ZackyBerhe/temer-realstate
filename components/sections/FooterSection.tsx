@@ -108,10 +108,10 @@ export default function FooterSection() {
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
                 <a
-                  href="mailto:info@temerproperties.com"
+                  href="mailto:info@temerpropertiessales.com"
                   className="text-sm text-background/60 hover:text-primary transition-colors"
                 >
-                  info@temerproperties.com
+                  info@temerpropertiessales.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
@@ -132,7 +132,15 @@ export default function FooterSection() {
         {/* Bottom bar */}
         <div className="mt-14 border-t border-background/10 pt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
           <p className="text-xs text-background/40">
-            {new Date().getFullYear()} Temer Properties. All rights reserved.
+            {new Date().getFullYear()} website developed by{" "}
+            <a
+              href="https://t.me/SoLiveTheLife"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary transition-colors"
+            >
+              Zekarias Berhe
+            </a>
           </p>
           <div className="flex gap-6">
             <button className="text-xs text-background/40 hover:text-primary transition-colors cursor-pointer">

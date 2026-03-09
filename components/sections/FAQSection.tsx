@@ -25,7 +25,7 @@ const faqs = [
   {
     question: "How do I schedule a property viewing?",
     answer:
-      "Scheduling a viewing is easy. You can call us directly at +251 913 455 624, message us on Telegram @temerproperties, or email info@temerproperties.com. We offer both in-person tours and virtual walkthroughs for your convenience. Our team is available 6 days a week.",
+      "Scheduling a viewing is easy. You can call us directly at +251 913 455 624, message us on Telegram @temerproperties, or email info@temerpropertiessales.com. We offer both in-person tours and virtual walkthroughs for your convenience. Our team is available 6 days a week.",
   },
   {
     question: "What guarantees do you provide on build quality?",
@@ -180,7 +180,7 @@ export default function FAQSection() {
                 +251 913 455 624
               </a>
               <a
-                href="mailto:info@temerproperties.com"
+                href="mailto:info@temerpropertiessales.com"
                 className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 Email Us

@@ -382,7 +382,7 @@ export default function PropertyModal({
             <RevealButton
               revealed={showEmail}
               onClick={() => setShowEmail(true)}
-              revealText="info@temerproperties.com"
+              revealText="info@temerpropertiessales.com"
               defaultIcon={<Mail className="h-4 w-4" />}
               defaultText="Email Us Now"
               variant="secondary"

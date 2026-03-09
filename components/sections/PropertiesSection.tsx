@@ -226,7 +226,7 @@ function PropertyCard({
           <CardRevealButton
             revealed={showEmail}
             onClick={() => setShowEmail(true)}
-            revealText="info@temer.com"
+            revealText="info@temerpropertiessales.com"
             icon={<Mail className="h-3.5 w-3.5" />}
             defaultText="Email Us"
             variant="secondary"

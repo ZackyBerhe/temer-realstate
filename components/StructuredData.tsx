@@ -7,7 +7,7 @@ export default function StructuredData() {
       "Premium real estate developer in Addis Ababa, Ethiopia. Trusted by 10,000+ residents for luxury apartments, villas, and condos.",
     url: "https://temerproperties.com",
     telephone: "+251-911-123-456",
-    email: "info@temerproperties.com",
+    email: "info@temerpropertiessales.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Bole Road, Atlas Area",

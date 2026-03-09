@@ -136,7 +136,7 @@ export default function FloatingCTA() {
             Message on WhatsApp
           </a>
           <a
-            href="mailto:info@temerproperties.com"
+            href="mailto:info@temerpropertiessales.com"
             className="flex items-center gap-3 rounded-xl bg-accent text-accent-foreground p-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground transition-colors mt-2"
           >
             <Mail className="h-4 w-4" />
