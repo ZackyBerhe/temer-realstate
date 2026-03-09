@@ -10,9 +10,6 @@ import PropertyCardAdmin from "@/components/admin/PropertyCardAdmin";
 import AddPropertyModal from "@/components/admin/AddPropertyModal";
 import { LogOut, Plus } from "lucide-react";
 
-// Force dynamic rendering to prevent SSR issues
-export const dynamic = "force-dynamic";
-
 export default function AdminDashboard() {
   const router = useRouter();
   const [properties, setProperties] = useState<Property[]>([]);
