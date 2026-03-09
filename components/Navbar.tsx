@@ -7,12 +7,12 @@ import Image from "next/image";
 import Logo from "../public/images/Logo.jpg";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Properties", href: "#properties" },
+  { label: "Home", href: "/" },
+  { label: "Properties", href: "/addis-ababa-real-estate" },
+  { label: "Ayat Real Estate", href: "/ayat-real-estate" },
+  { label: "About Us", href: "/temer-properties" },
   { label: "Projects", href: "#projects" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Contact", href: "mailto:info@temerpropertiessales.com" },
 ];
 
 export default function Navbar() {

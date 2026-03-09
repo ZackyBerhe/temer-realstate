@@ -9,6 +9,10 @@ import { getProperties } from "@/lib/propertyService";
 import PropertyCardAdmin from "@/components/admin/PropertyCardAdmin";
 import AddPropertyModal from "@/components/admin/AddPropertyModal";
 import { LogOut, Plus } from "lucide-react";
+import { generateMetadata, SEOConfig } from "@/lib/seo";
+
+// Since this is a client component with dynamic auth, we can't export metadata directly
+// The metadata will be handled by the layout or through client-side updates
 
 export default function AdminDashboard() {
   const router = useRouter();

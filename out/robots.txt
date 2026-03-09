@@ -1,0 +1,26 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /_next/static/
+Disallow: /_next/image/
+Disallow: /favicon.ico
+Disallow: /sitemap.xml
+
+User-Agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+User-Agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Crawl-delay: 1
+
+Host: https://temerproperties.com
+Sitemap: https://temerproperties.com/sitemap.xml

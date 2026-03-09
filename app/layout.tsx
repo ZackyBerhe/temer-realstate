@@ -7,12 +7,16 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
+  preload: true,
+  fallback: ["serif"],
 });
 
 export const metadata: Metadata = {
@@ -88,6 +92,8 @@ export const viewport: Viewport = {
   themeColor: "#3a7d44",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -97,6 +103,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jakarta.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="font-sans antialiased overflow-x-hidden">
         {children}
         <Analytics />

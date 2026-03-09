@@ -6,22 +6,38 @@ const footerLinks = [
   {
     title: "Quick Links",
     links: [
-      { label: "Home", href: "#hero" },
-      { label: "Properties", href: "#properties" },
-      { label: "Projects", href: "#projects" },
-      { label: "Testimonials", href: "#testimonials" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Home", href: "/" },
+      { label: "Addis Ababa Real Estate", href: "/addis-ababa-real-estate" },
+      { label: "Ayat Real Estate", href: "/ayat-real-estate" },
+      { label: "About Temer Properties", href: "/temer-properties" },
+      { label: "Contact", href: "mailto:info@temerpropertiessales.com" },
     ],
   },
   {
     title: "Neighborhoods",
     links: [
-      { label: "Bole", href: "#properties" },
-      { label: "CMC", href: "#properties" },
-      { label: "Kazanchis", href: "#properties" },
-      { label: "Old Airport", href: "#properties" },
-      { label: "Summit", href: "#properties" },
-      { label: "Ayat", href: "#properties" },
+      { label: "Bole Real Estate", href: "/addis-ababa-real-estate#bole" },
+      { label: "Ayat Properties", href: "/ayat-real-estate" },
+      { label: "CMC Real Estate", href: "/addis-ababa-real-estate#cmc" },
+      { label: "Kazanchis Homes", href: "/addis-ababa-real-estate#kazanchis" },
+      { label: "Old Airport", href: "/addis-ababa-real-estate#old-airport" },
+      { label: "Summit Properties", href: "/addis-ababa-real-estate#summit" },
+    ],
+  },
+  {
+    title: "Property Types",
+    links: [
+      {
+        label: "Luxury Apartments",
+        href: "/addis-ababa-real-estate#apartments",
+      },
+      { label: "Family Homes", href: "/addis-ababa-real-estate#homes" },
+      {
+        label: "Investment Properties",
+        href: "/real-estate-investment-addis-ababa",
+      },
+      { label: "Villas for Sale", href: "/villas-for-sale-addis-ababa" },
+      { label: "Property Management", href: "/property-management" },
     ],
   },
 ];
@@ -91,13 +107,13 @@ export default function FooterSection() {
             </h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                 <span className="text-sm text-background/60">
                   Bole Road, Atlas Area, Addis Ababa, Ethiopia
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                <Phone className="h-5 w-5 text-primary shrink-0" />
                 <a
                   href="tel:+251913455624"
                   className="text-sm text-background/60 hover:text-primary transition-colors"
@@ -106,7 +122,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                <Mail className="h-5 w-5 text-primary shrink-0" />
                 <a
                   href="mailto:info@temerpropertiessales.com"
                   className="text-sm text-background/60 hover:text-primary transition-colors"
@@ -115,7 +131,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MessageCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                <MessageCircle className="h-5 w-5 text-primary shrink-0" />
                 <a
                   href="https://t.me/temerproperties"
                   target="_blank"
