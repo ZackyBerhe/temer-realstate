@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Temer Properties | Premium Real Estate in Addis Ababa, Ethiopia",
+  title: "Temer Properties | Apartments & Properties in Addis Ababa, Ethiopia",
   description:
     "Find luxury apartments, villas, and condos in Addis Ababa. Temer Properties offers premium real estate with 10,000+ happy residents. Affordable pricing, prime locations, and trusted quality since 2015.",
   keywords: [
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Temer Properties" }],
   openGraph: {
-    title: "Temer Properties | Premium Real Estate in Addis Ababa",
+    title: "Temer Properties | Apartments & Properties in Addis Ababa",
     description:
       "Discover handpicked luxury properties in Addis Ababa. Trusted by 10,000+ residents. Apartments, villas & condos with flexible payment plans.",
     url: "https://temerproperties.com",
@@ -45,7 +45,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Temer Properties | Premium Real Estate in Addis Ababa",
+    title:
+      "Temer Properties | Apartments & Properties in Addis Ababa, Ethiopia",
     description:
       "Luxury apartments, villas & condos in Addis Ababa. Trusted by 10,000+ residents.",
   },

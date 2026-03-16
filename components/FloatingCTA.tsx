@@ -191,7 +191,7 @@ export default function FloatingCTA() {
             WhatsApp
           </a>
           <a
-            href="https://t.me/temerproperties"
+            href="https://t.me/benimak7"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 bg-[#0088cc] text-primary-foreground py-3 rounded-xl text-sm font-bold"

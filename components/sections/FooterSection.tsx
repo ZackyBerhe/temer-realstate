@@ -133,7 +133,7 @@ export default function FooterSection() {
               <li className="flex items-center gap-3">
                 <MessageCircle className="h-5 w-5 text-primary shrink-0" />
                 <a
-                  href="https://t.me/temerproperties"
+                  href="https://t.me/benimak7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-background/60 hover:text-primary transition-colors"

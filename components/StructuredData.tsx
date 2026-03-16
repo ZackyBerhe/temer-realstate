@@ -71,7 +71,7 @@ export default function StructuredData() {
     sameAs: [
       "https://facebook.com/temerproperties",
       "https://instagram.com/temerproperties",
-      "https://t.me/temerproperties",
+      "https://t.me/benimak7",
     ],
     makesOffer: [
       {
