@@ -7,12 +7,11 @@ import Image from "next/image";
 import Logo from "../public/images/Logo.jpg";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Properties", href: "/addis-ababa-real-estate" },
-  { label: "Ayat Real Estate", href: "/ayat-real-estate" },
-  { label: "About Us", href: "/temer-properties" },
+  { label: "Home", href: "#hero" },
+  { label: "Properties", href: "#properties" },
+  { label: "About Us", href: "#why-us" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "mailto:info@temerpropertiessales.com" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -24,6 +23,8 @@ export default function Navbar() {
 
   // GSAP-powered smooth scroll to section
   const scrollToSection = useCallback(async (href: string) => {
+    setMenuOpen(false);
+    if (!href.startsWith("#") || href === "#") return;
     const gsapModule = await import("gsap");
     const scrollToModule = await import("gsap/ScrollToPlugin");
     const gsap = gsapModule.default;
@@ -37,7 +38,6 @@ export default function Navbar() {
         ease: "power3.inOut",
       });
     }
-    setMenuOpen(false);
   }, []);
 
   // Scroll listener for navbar bg and active section tracking

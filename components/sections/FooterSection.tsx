@@ -4,13 +4,13 @@ import { Building2, MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 
 const footerLinks = [
   {
-    title: "Quick Links",
+    title: "",
     links: [
-      { label: "Home", href: "/" },
-      { label: "Addis Ababa Real Estate", href: "/addis-ababa-real-estate" },
-      { label: "Ayat Real Estate", href: "/ayat-real-estate" },
-      { label: "About Temer Properties", href: "/temer-properties" },
-      { label: "Contact", href: "mailto:info@temerpropertiessales.com" },
+      { label: "", href: "/" },
+      { label: "", href: "/addis-ababa-real-estate" },
+      { label: "", href: "/ayat-real-estate" },
+      { label: "", href: "/temer-properties" },
+      { label: "", href: "mailto:info@temerpropertiessales.com" },
     ],
   },
   {
@@ -61,7 +61,7 @@ export default function FooterSection() {
   };
 
   return (
-    <footer className="bg-foreground text-background">
+    <footer id="contact" className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
